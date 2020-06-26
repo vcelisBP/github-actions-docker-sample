@@ -13,7 +13,7 @@ jobs:
           ls
       - name: Run a sample Docker container action
         id: sampledockeraction
-        uses: ./
+        uses: ./action
         with:
           name: D'Luciano Elfoz de la luz
 
