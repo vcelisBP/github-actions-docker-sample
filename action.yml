@@ -1,25 +1,16 @@
-# ref: https://help.github.com/en/actions/building-actions/metadata-syntax-for-github-actions
-name: GitHub Actions Docker Sample
-description: This is a simple GitHub Actions sample using a Docker container
-
-author: Justin Yoo
-
-branding:
-  color: green
-  icon: activity
-
+# action.yml
+name: 'Serverless Framework'
+description: 'Wraps the Serverless Framework to enable common Serverless commands.'
 inputs:
-  name:
+  name:  # id of input
+    description: 'Serverless Framework Version'
     required: true
-    description: Name to pass
-    # default:
-
 outputs:
-  greeting:
-    description: Greetings to be passed
-
+  version: # id of output
+    description: 'The Serverless Version is:'
 runs:
   using: docker
   image: Dockerfile
   env:
     NAME: ${{ inputs.name }}
+
