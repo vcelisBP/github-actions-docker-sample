@@ -20,6 +20,6 @@ jobs:
       - name: Get the output
         shell: bash
         run: |
-          echo ${{ steps.consoleapp.outputs.greeting }}
+          echo ${{ steps.sampledockeraction.outputs.greeting }}
 
 
