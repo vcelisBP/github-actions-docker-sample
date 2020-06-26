@@ -3,27 +3,22 @@ name: Build and Test GitHub Action
 on: push
 
 jobs:
-  build_and_test:
-    name: Build and test the GitHub Action
-    strategy:
-      matrix:
-        os: [ 'ubuntu-latest' ]
-        dotnet: [ '3.1.100' ]
+  serverless-action:
+    runs-on: ubuntu-latest
+    name: Set serverless Version
+    steps:  
+      - uses: actions/checkout@v1
+      - name: verify actions
+        run: |
+          ls
+      - name: Run a sample Docker container action
+        id: sampledockeraction
+        uses: ./
+        with:
+          name: D'Luciano Elfoz de la luz
 
-    runs-on: ${{ matrix.os }}
+      - name: Get the output
+        shell: bash
+        run:  echo ${{ steps.sampledockeraction.outputs.greeting }}
 
-    steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v1
-
-    - name: Run the private action
-      id: consoleapp
-      uses: ./
-      with:
-        name: Live Coding
-
-    - name: Get the output
-      shell: bash
-      run: |
-        echo ${{ steps.consoleapp.outputs.greeting }}
 
